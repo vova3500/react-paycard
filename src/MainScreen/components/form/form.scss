@@ -1,0 +1,58 @@
+.cardForm {
+  background-color: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 3px 28px 1px rgba(0, 0, 0, 0.26);
+  box-shadow: 2px 3px 28px 1px rgba(0, 0, 0, 0.26);
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+
+  .cardForm-inputText {
+    width: 90%;
+
+    label {
+      font-size: 14px;
+      color: rgb(109, 109, 109);
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: calc(100% - 20px);
+      border: 0.5px solid rgb(206, 206, 206);
+      border-radius: 5px;
+      outline: none;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      color: rgb(206, 206, 206);
+    }
+  }
+
+  .cardForm-container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+
+    .cardForm-container-inputText {
+      input[type="text"] {
+        padding: 10px;
+        border: 0.5px solid rgb(206, 206, 206);
+        border-radius: 5px;
+        outline: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .cardForm-select select {
+      padding: 10px;
+      border: 0.5px solid rgb(206, 206, 206);
+      border-radius: 5px;
+      outline: none;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}
