@@ -1,9 +1,8 @@
 export const initialState = {
-    cardNumber: '"#### #### #### ####',
-    cardHolder: 'FULL NAME',
+    cardNumber: '',
+    cardHolder: '',
     cardMonth: '',
     cardYear: '',
     cardCVV: '',
     isFlipped: false,
-    currentFocusedElm: null,
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import { initialState } from "./state";
 
@@ -9,11 +9,27 @@ import "./../index.css";
 
 const MainScreen = () => {
   const [state, setState] = useState(initialState);
+  console.log(state);
+
+  const updateStateValues = useCallback(
+    (keyName, value) => {
+      setState({
+        ...state,
+        [keyName]: value || initialState[keyName],
+      });
+    },
+    [state]
+  );
 
   return (
     <div className="mainScreen">
-      <Card setState={setState} state={state} />
-      <Form setState={setState} state={state} />
+      <Card state={state} />
+      <Form
+        updateStateValues={updateStateValues}
+        cardNumber={state.cardNumber}
+        cardHolder={state.cardHolder}
+        cardCVV={state.cardCVV}
+      />
     </div>
   );
 };
