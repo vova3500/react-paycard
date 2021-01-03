@@ -9,7 +9,6 @@ import "./../index.css";
 
 const MainScreen = () => {
   const [state, setState] = useState(initialState);
-  console.log(state);
 
   const updateStateValues = useCallback(
     (keyName, value) => {
@@ -23,12 +22,13 @@ const MainScreen = () => {
 
   return (
     <div className="mainScreen">
-      <Card state={state} />
+      <Card {...state} />
       <Form
         updateStateValues={updateStateValues}
         cardNumber={state.cardNumber}
         cardHolder={state.cardHolder}
         cardCVV={state.cardCVV}
+        isFlipped={state.isFlipped}
       />
     </div>
   );

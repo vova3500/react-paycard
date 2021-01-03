@@ -1,35 +1,35 @@
 import React from "react";
+import Back from "./Back";
 
 import "./card.scss";
+import Front from "./Front";
 
-import chip from "../../../img/chip.png";
-import visa_logo from "../../../img/visa_logo.png";
-
-const Card = () => {
+const Card = ({
+  cardNumber,
+  cardHolder,
+  cardMonth,
+  cardYear,
+  cardCVV,
+  isFlipped,
+}) => {
   return (
     <div className="card">
-      <div className="card-header">
-        <div className="card-chip">
-          <img src={chip} alt="chip" />
-        </div>
-        <div className="card-logo">
-          <img src={visa_logo} alt="logo" />
-        </div>
+      <div
+        className="front"
+        style={isFlipped ? { transform: "rotateY(180deg)" } : {}}
+      >
+        <Front
+          cardNumber={cardNumber}
+          cardHolder={cardHolder}
+          cardMonth={cardMonth}
+          cardYear={cardYear}
+        />
       </div>
-
-      <div className="card-number">
-        <div>#### **** **** ####</div>
-      </div>
-
-      <div className="card-bottom">
-        <div className="card-bottom-item">
-          <div>Card Holder</div>
-          <div>FULL NAME</div>
-        </div>
-        <div className="card-bottom-item">
-          <div>Expires</div>
-          <div>MM/YY</div>
-        </div>
+      <div
+        className="back"
+        style={isFlipped ? { transform: "rotateY(360deg)" } : {}}
+      >
+        <Back cardCVV={cardCVV} />
       </div>
     </div>
   );

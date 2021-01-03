@@ -2,7 +2,13 @@ import React from "react";
 
 import "./form.scss";
 
-const Form = ({ updateStateValues, cardNumber, cardHolder, cardCVV }) => {
+const Form = ({
+  updateStateValues,
+  cardNumber,
+  cardHolder,
+  cardCVV,
+  isFlipped,
+}) => {
   const monthsArr = Array.from({ length: 12 }, (x, i) => {
     const month = i + 1;
     return month <= 9 ? "0" + month : month;
@@ -19,12 +25,17 @@ const Form = ({ updateStateValues, cardNumber, cardHolder, cardCVV }) => {
 
   const handeleFormValidation = (event) => {
     const { name, value } = event.target;
-    if (name === "cardNumber" && cardCVV.length !== 8) {
+
+    if (name === "cardNumber" && value.length <= 16) {
       updateStateValues(name, value);
     }
-    if (name === "cardCVV" && cardCVV.length !== 4) {
+    if (name === "cardCVV" && value.length <= 4) {
       updateStateValues(name, value);
     }
+  };
+
+  const haendeFlip = () => {
+    updateStateValues("isFlipped", !isFlipped);
   };
 
   return (
@@ -48,7 +59,7 @@ const Form = ({ updateStateValues, cardNumber, cardHolder, cardCVV }) => {
           id="cardHolder"
           value={cardHolder}
           type="text"
-          placeholder="Number Holder"
+          placeholder="Holder"
           onChange={(e) => handeleForm(e)}
         />
       </div>
@@ -91,6 +102,8 @@ const Form = ({ updateStateValues, cardNumber, cardHolder, cardCVV }) => {
             type="text"
             placeholder="CVV"
             onChange={(e) => handeleFormValidation(e)}
+            onFocus={() => haendeFlip()}
+            onBlur={() => haendeFlip()}
           />
         </div>
       </div>
